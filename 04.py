@@ -2,7 +2,7 @@
 import re
 from collections import Counter
 
-def cal(filename='test.txt'):
+def cal(filename='tes.txt'):
     with open(filename, 'r') as f:
         data = f.read()
     data = data.lower()
