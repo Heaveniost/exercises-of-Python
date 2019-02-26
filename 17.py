@@ -8,6 +8,7 @@ sh = wb.sheet_by_index(0)
 data = dict()
 for rx in range(sh.nrows):
     row = sh.row(rx)
+    # [text:'2', text:'李四', number:90.0, number:99.0, number:95.0]
     value_list = list()
     key = row[0].value
     for i in row[1:]:

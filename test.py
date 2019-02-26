@@ -1,18 +1,14 @@
-# coding=utf-8
+import hashlib, random 
 
-import os, json, xlwt 
+def get_md5(s):
+	return hashlib.md5(s.encode('utf-8')).hexdigest()
 
-def a():
-	with open('txt', 'r') as f:
-		content = f.read
-	d = json.loads(content)
-	file = xlwt.Workbook()
-	table = file.add_sheet('test')
-	for row, i in enumerate(list(d)):
-		table.write(row, 0, i)
-		for col, j in enumerate(d[i]):
-			table.write(row, col+1, j)
-	file.save('./Docs/student.xls')
+def store_password(password):
+	salt = ''.join([chr(random.randint(48, 122)) for i in range(20)])
+	pswd = get_md5(password + salt)
+	return pswd 
 
 if __name__ == '__main__':
-	a()
+	password = input('Input Password: ')
+	encrypted_password = store_password(password)
+	print(encrypted_password)
